@@ -1,0 +1,25 @@
+.col{
+  position: absolute;
+  top: 15%;
+  left: 33%;
+  width: 25rem;
+  height: 25rem;
+  // background-color: navajowhite;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border: 4px solid;
+  box-shadow: 10px 10px 10px 10px;
+}
+
+  .login-form-margin {
+    margin-bottom: 16px;
+  }
+
+
+  .login-form-button {
+    width: 100%;
+  }
+  h2 {
+    color: blue;
+  }

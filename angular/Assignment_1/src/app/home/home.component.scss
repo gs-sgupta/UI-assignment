@@ -1,0 +1,64 @@
+.header-title{
+    background-color:aqua;
+    text-align:center;
+    display: flex;
+    border: 1px;
+  }
+  .header-title-1{
+    flex:30%;
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-style: oblique;
+  }
+  .header-title-2{
+    flex:80%;
+    display: flex;
+  }
+  .user-view{
+    position: relative;
+    top:5%;
+    left:37rem;
+  }
+  .logout-view{
+    position: relative;
+    top:5%;
+    left:39rem;
+  }
+
+.sub-header-info{
+    display:flex;
+    padding: 1rem;
+    background: aquamarine;
+  }
+  .sub-header-col1{
+    flex:95%;
+    font-size: larger;
+    padding-left: 2em;
+  }
+  .sub-header-col2{
+    flex:5%;
+  }
+  .card-view{
+    min-height:1000rem;
+    background-color: lightgray;
+  }
+  .layout {
+    min-height: 100vh;
+  }
+  .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+  }
+  nz-header {
+    align-items: center;
+    background: #fff;
+    padding: 0;
+  }
+  nz-content {
+    margin: 24px 16px 0;
+  }
+
+  nz-footer {
+    text-align: center;
+  }

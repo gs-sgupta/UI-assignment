@@ -1,0 +1,63 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin@gainsight.com",
+      "password": "admin@123",
+      "role": "ADMIN"
+    },
+    {
+      "username": "admin@gainsight.com",
+      "password": "admin@123",
+      "role": "user",
+      "id": 2
+    }
+  ],
+  "employees": [
+    {
+      "name": "swapnil",
+      "email": "sgupta@gainsight.com",
+      "companyId": "GS2415",
+      "gender": "Male",
+      "doj": "10/3/2022",
+      "department": "Engineering",
+      "id": 1
+    },
+    {
+      "name": "efhruwdfjs",
+      "email": "s@g.com",
+      "companyId": "uwredjks",
+      "gender": "Male",
+      "doj": "10/25/2022",
+      "department": "Engineering",
+      "id": 8
+    },
+    {
+      "name": "rhbekdfs",
+      "email": "sgupta@gainsight.com",
+      "companyId": "GS4761",
+      "gender": "Male",
+      "doj": "02/18/2009",
+      "department": "Engineering",
+      "id": 9
+    },
+    {
+      "name": "badal guptA",
+      "email": "dededed@g.c",
+      "companyId": "GS3421",
+      "gender": "Male",
+      "doj": "12/26/2001",
+      "department": "TechOps",
+      "id": 10
+    },
+    {
+      "name": "Production Server",
+      "email": "b@g.com",
+      "companyId": "GS4563",
+      "gender": "Male",
+      "doj": "10/18/2022",
+      "department": "Designing",
+      "id": 11
+    }
+  ]
+}

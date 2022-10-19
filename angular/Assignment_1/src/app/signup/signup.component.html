@@ -1,0 +1,39 @@
+<div class="col">
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="onSignUp()">
+    <h2>Sign Up</h2>
+      <nz-form-item>
+        <nz-form-label nzFor="uname" nzRequired>Username</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-input-group nzPrefixIcon="user">
+            <input
+              type="text"
+              nz-input
+              formControlName="uemail"
+              placeholder="Email"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="uemail">Password</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your Password!">
+          <nz-input-group nzPrefixIcon="lock">
+            <input
+              type="password"
+              nz-input
+              formControlName="password"
+              placeholder="Password"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    <button
+      nz-button
+      class="signup-form-button signup-form-margin"
+      nzType="primary"
+    >
+      Register
+    </button>
+    <a routerLink="/login"><strong>Already a member ! Login</strong></a>
+  </form>
+</div>

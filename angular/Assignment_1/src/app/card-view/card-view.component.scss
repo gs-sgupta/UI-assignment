@@ -1,0 +1,19 @@
+.card-title{
+    font-size: 2rem;
+    font-weight: 400;
+    background-color: lightgreen;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+  }
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+.has-text-centered{
+    padding:2rem;
+}

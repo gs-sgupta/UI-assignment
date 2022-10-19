@@ -1,0 +1,51 @@
+<nz-layout class="layout">
+  <nz-sider nzCollapsible [nzCollapsedWidth]="0">
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <a [routerLink]="['/home', currUser, 'list-view']">
+          <span nz-icon nzType="profile" nzTheme="outline"></span>
+          <span>List View</span>
+        </a>
+      </li>
+      <li nz-menu-item>
+        <a [routerLink]="['/home', currUser, 'card-view']">
+          <span nz-icon nzType="container" nzTheme="outline"></span>
+          <span>Card view</span>
+        </a>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-header class="header-title">
+      <div class="header-title-1">Gainsight</div>
+      <div class="header-title-2">
+        <div  class="user-view">
+          <strong>{{ currUser }}</strong>
+        </div>
+        <div class="logout-view">
+          <a (click)="onLogout()"><strong>Logout</strong></a>
+        </div>
+      </div>
+      <!-- <div class="header-title-4"></div> -->
+    </nz-header>
+    <div class="sub-header-info">
+      <div class="sub-header-col1"></div>
+      <div class="sub-header-col2">
+        <button nz-button nzType="primary" (click)="onAddEmployee()">
+          Add Employee
+        </button>
+
+        <!-- <nz-modal
+          [(nzVisible)]="isVisibleMiddle"
+          nzTitle="Vertically centered modal dialog"
+          nzCentered
+          (nzOnCancel)="handleCancelMiddle()"
+          (nzOnOk)="handleOkMiddle()"
+        >
+        </nz-modal> -->
+      </div>
+    </div>
+    <div><router-outlet></router-outlet></div>
+  </nz-layout>
+</nz-layout>

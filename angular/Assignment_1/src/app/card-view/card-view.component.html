@@ -1,0 +1,97 @@
+<div class="grid-container">
+  <nz-card
+    *ngFor="
+      let data of employeeList
+        | paginate: { itemsPerPage: 3, currentPage: page }
+    "
+  >
+    <div class="grid-item">
+      <div class="card-title">
+        <b>{{ data.name }}</b>
+      </div>
+      <br />
+      <div class="card-content">
+        <p>Email : {{ data.email }}</p>
+        <p>Company Id : {{ data.companyId }}</p>
+        <p>Gender : {{ data.gender }}</p>
+        <p>DOJ : {{ data.doj }}</p>
+        <p>Department : {{ data.department }}</p>
+
+        <a (click)="showModal(data,data.id)">Edit</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a (click)="deleteEmployeeWithId(data.id)">Delete</a>
+      </div>
+    </div>
+  </nz-card>
+</div>
+<div class="has-text-centered">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Edit Employee"
+  [(nzCancelText)]="isCancelText"
+  [(nzOkText)]="isCancelText"
+  (nzOnCancel)="handleCancel()"
+>
+  <div>
+    <form nz-form [formGroup]="employeeForm" (ngSubmit)="onUpdate()">
+      <nz-form-item>
+        <nz-form-label nzFor="name" nzRequired>Name</nz-form-label>
+        <nz-form-control nzErrorTip="Please enter name">
+          <input nz-input id="name" formControlName="name" placeholder="Name" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="email">E-mail</nz-form-label>
+        <nz-form-control nzErrorTip="The input is not valid E-mail!">
+          <input nz-input formControlName="email" id="email" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Company ID</nz-form-label>
+        <nz-form-control nzErrorTip="Enter valid CompanyId">
+          <input nz-input formControlName="companyId" placeholder="CompanyId" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="gender">Gender</nz-form-label>
+        <nz-form-control nzErrorTip="Please enter gender">
+          <nz-radio-group formControlName="gender">
+            <label nz-radio [nzValue]="o.value" *ngFor="let o of options">{{
+              o.label
+            }}</label>
+          </nz-radio-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Date of Joining</nz-form-label>
+        <nz-form-control nzErrorTip="Choose Date of joining">
+          <nz-date-picker formControlName="doj"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>Department</nz-form-label>
+        <nz-form-control nzErrorTip="Choose Date of joining"
+          ><nz-select name="department" formControlName="department">
+            <nz-option nzValue="Engineering" nzLabel="Engineering"></nz-option>
+            <nz-option nzValue="Designing" nzLabel="Designing"></nz-option>
+            <nz-option
+              nzValue="Documentation"
+              nzLabel="Documentation"
+            ></nz-option>
+            <nz-option nzValue="DevOps" nzLabel="DevOps"></nz-option>
+            <nz-option nzValue="TechOps" nzLabel="TechOps"></nz-option>
+            <nz-option nzValue="HR" nzLabel="HR"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzOffset]="10">
+          <button nz-button nzType="primary">Submit</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</nz-modal>
