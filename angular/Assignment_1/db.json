@@ -11,15 +11,27 @@
       "password": "123456",
       "role": "user",
       "id": 2
+    },
+    {
+      "username": "hardik@g.com",
+      "password": "12345",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "username": "lalo@gmail.com",
+      "password": "qweasdzxc",
+      "role": "user",
+      "id": 4
     }
   ],
   "employees": [
     {
       "name": "badal",
-      "email": "b@gainsight.com",
+      "email": "b@gainsight.comjeswad",
       "companyId": "GS128121",
       "gender": "Male",
-      "doj": "10/27/2022",
+      "doj": "2022-10-18T16:00:14.969Z",
       "department": "Engineering",
       "id": 1
     },
@@ -28,7 +40,7 @@
       "email": "s@g.com",
       "companyId": "GS24154",
       "gender": "Male",
-      "doj": "2022-10-24T18:30:00.000Z",
+      "doj": "2022-10-12T18:30:00.000Z",
       "department": "Documentation",
       "id": 2
     },
@@ -37,36 +49,27 @@
       "email": "test@test.comi",
       "companyId": "GS7843",
       "gender": "Male",
-      "doj": "2022-10-24T18:30:00.000Z",
+      "doj": "2022-01-19T16:32:30.446Z",
       "department": "TechOps",
       "id": 3
     },
     {
-      "name": "prachi",
-      "email": "p@g.com",
-      "companyId": "GS2415",
+      "name": "prachi sharma",
+      "email": "p1@g.com",
+      "companyId": "GS24154",
       "gender": "Female",
-      "doj": "2022-10-27T13:36:28.267Z",
-      "department": "Documentation",
+      "doj": "2022-10-19T13:36:28.267Z",
+      "department": "HR",
       "id": 4
     },
     {
-      "name": "shardha",
-      "email": "b@g.com",
-      "companyId": "GS4352",
-      "gender": "Female",
-      "doj": "2022-10-27T18:30:00.000Z",
-      "department": "DevOps",
+      "name": "hardik",
+      "email": "h@gainsight.com",
+      "companyId": "GS2736283",
+      "gender": "Male",
+      "doj": "2022-10-02T16:35:22.765Z",
+      "department": "Engineering",
       "id": 5
-    },
-    {
-      "name": "tanya ag",
-      "email": "t@g.com",
-      "companyId": "GS4363",
-      "gender": "Female",
-      "doj": "2022-10-24T18:30:00.000Z",
-      "department": "TechOps",
-      "id": 6
     }
   ]
 }

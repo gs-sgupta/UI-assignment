@@ -44,8 +44,6 @@ export class EmployeeFormComponent implements OnInit {
   }
   onSubmit(): void {
     if (this.employeeForm.valid) {
-      console.log("submit", this.employeeForm.value);
-      console.log(this.employeeForm.value.doj);
       this.employeeObj.name = this.employeeForm.value.name;
       this.employeeObj.email = this.employeeForm.value.email;
       this.employeeObj.companyId = this.employeeForm.value.companyId;

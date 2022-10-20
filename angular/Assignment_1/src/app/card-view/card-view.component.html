@@ -17,7 +17,7 @@
         <p>DOJ : {{ data.doj }}</p>
         <p>Department : {{ data.department }}</p>
 
-        <a (click)="showModal(data,data.id)">Edit</a>
+        <a (click)="showModal(data.id)">Edit</a>
         <nz-divider nzType="vertical"></nz-divider>
         <a (click)="deleteEmployeeWithId(data.id)">Delete</a>
       </div>

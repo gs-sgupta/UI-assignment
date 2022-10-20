@@ -30,6 +30,7 @@ export class SignupComponent implements OnInit {
       this.signupCredential.password = this.userInput.value.password;
       this.signupCredential.role = "user";
       this.eService.onSignUp(this.signupCredential).subscribe(
+        
         (res: any) => {
           alert("SignUp SuccessFul");
           this.userInput.reset();

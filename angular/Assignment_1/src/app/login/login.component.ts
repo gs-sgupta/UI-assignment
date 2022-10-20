@@ -1,3 +1,4 @@
+import { invalid } from "@angular/compiler/src/render3/view/util";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -31,29 +32,36 @@ export class LoginComponent implements OnInit {
     if (this.userInput.valid) {
       this.loginCredential.username = this.userInput.value.uemail;
       this.loginCredential.password = this.userInput.value.password;
-      const isUserPresent = this.eService
-        .onLogin(this.loginCredential)
-        .subscribe(
-          (res) => {
-            return (
-              this.loginCredential.username === res.username &&
-              this.loginCredential.password === res.password
+      // doubt why after observable subscribe any statement is not executed
+      this.eService.onLogin(this.loginCredential).subscribe(
+        (res) => {
+          console.log(
+            "loginCredential",
+            this.loginCredential.username,
+            this.loginCredential.password
+          );
+          console.log("Result From API", res);
+          if (
+            res.length &&
+            this.loginCredential.username === res[0].username &&
+            this.loginCredential.password === res[0].password
+          ) {
+            this.authService.onlogin();
+            alert("Login Successful");
+            this.userInput.reset();
+            localStorage.setItem(
+              "User Credential",
+              JSON.stringify(this.loginCredential)
             );
-          },
-          (error: any) => {
-            console.log(error);
+            this.router.navigate(["home"]);
+          } else {
+            alert("invalid credentials");
           }
-        );
-      if (isUserPresent) {
-        this.authService.onlogin();
-        alert("Login Successful");
-        this.userInput.reset();
-        localStorage.setItem(
-          "User Credential",
-          JSON.stringify(this.loginCredential)
-        );
-        this.router.navigate(["home"]);
-      }
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
     } else {
       Object.values(this.userInput.controls).forEach((control) => {
         if (control.invalid) {

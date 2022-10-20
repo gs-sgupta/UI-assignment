@@ -23,7 +23,16 @@ export class EmployeeService {
       })
     );
   }
-  updateEmployee(data: employeeModel, id: number) {
+
+  getEmployeeWithId(id: number) {
+    return this.http.get<any>("http://localhost:3000/employees/" + id).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
+
+  updateEmployeeWithId(data: employeeModel, id: number) {
     // console.log("onupdate", data, id);
     return this.http
       .put<any>("http://localhost:3000/employees/" + id, data)
@@ -33,7 +42,7 @@ export class EmployeeService {
         })
       );
   }
-  deleteEmployee(id: number) {
+  deleteEmployeeWithId(id: number) {
     return this.http.delete<any>("http://localhost:3000/employees/" + id).pipe(
       map((res: any) => {
         return res;
@@ -49,15 +58,22 @@ export class EmployeeService {
     );
   }
 
-  onLogin(loginCredential:login){
-    const params = new HttpParams()
-      .set("username", loginCredential.username)
-      .set("password", loginCredential.password);
-    return this.http.get<any>("http://localhost:3000/users?", { params }).pipe(
-      map((res: any) => {
-        return res;
-      })
+  onLogin(loginCredential: login) {
+    const name = loginCredential.username;
+    const password = loginCredential.password;
+    console.log(
+      name,
+      password,
+      `http://localhost:3000/users?username=${name}&password=${password}`
     );
+    return this.http
+      .get<any>(
+        `http://localhost:3000/users?username=${name}&password=${password}`
+      )
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
   }
-
 }
