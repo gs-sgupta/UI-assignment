@@ -39,7 +39,6 @@ export class EmployeeFormComponent implements OnInit {
   // display all the employee info in list
   listAllEmployee() {
     this.eService.getEmployees().subscribe((res) => {
-      // console.log(res);
       this.employeeList = res;
     });
   }
@@ -54,7 +53,11 @@ export class EmployeeFormComponent implements OnInit {
       this.employeeObj.department = this.employeeForm.value.department;
       var date = JSON.stringify(this.employeeForm.value.doj).slice(1, 11);
       const [year, month, day] = date.split("-");
-      this.employeeObj.doj = [month, +day + 1, year].join("/");
+      this.employeeObj.doj = [
+        month,
+        +day + 1 === 32 ? 31 : +day + 1,
+        year,
+      ].join("/");
       this.eService.postEmployee(this.employeeObj).subscribe(
         (res) => {
           console.log(res);

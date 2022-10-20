@@ -9,15 +9,14 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { AuthGuardService } from "./services/auth-gaurd.service";
 import { SignupComponent } from "./signup/signup.component";
 
-
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
   {
-    path: "home/:name",
+    path: "home",
     component: HomeComponent,
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     children: [
       { path: "card-view", component: CardViewComponent },
       { path: "list-view", component: ListViewComponent },

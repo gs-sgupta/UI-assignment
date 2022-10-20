@@ -5,12 +5,6 @@
       "username": "admin@gainsight.com",
       "password": "admin@123",
       "role": "ADMIN"
-    },
-    {
-      "username": "admin@gainsight.com",
-      "password": "admin@123",
-      "role": "user",
-      "id": 2
     }
   ],
   "employees": [
@@ -19,8 +13,8 @@
       "email": "sgupta@gainsight.com",
       "companyId": "GS2415",
       "gender": "Male",
-      "doj": "10/3/2022",
-      "department": "Engineering",
+      "doj": "10/21/2014",
+      "department": "Designing",
       "id": 1
     },
     {
@@ -28,36 +22,54 @@
       "email": "s@g.com",
       "companyId": "uwredjks",
       "gender": "Male",
-      "doj": "10/25/2022",
+      "doj": "02/28/2003",
       "department": "Engineering",
       "id": 8
     },
     {
-      "name": "rhbekdfs",
+      "name": "hola coder",
       "email": "sgupta@gainsight.com",
       "companyId": "GS4761",
       "gender": "Male",
-      "doj": "02/18/2009",
+      "doj": "03/31/2010",
       "department": "Engineering",
       "id": 9
     },
     {
-      "name": "badal guptA",
+      "name": "k badal",
       "email": "dededed@g.c",
       "companyId": "GS3421",
       "gender": "Male",
-      "doj": "12/26/2001",
+      "doj": "10/21/2022",
       "department": "TechOps",
       "id": 10
     },
     {
       "name": "Production Server",
       "email": "b@g.com",
-      "companyId": "GS4563",
+      "companyId": "GS4563t7428583",
       "gender": "Male",
-      "doj": "10/18/2022",
-      "department": "Designing",
+      "doj": "10/32/2022",
+      "department": "Documentation",
       "id": 11
+    },
+    {
+      "name": "Production Server",
+      "email": "sgupta@gainsight.com",
+      "companyId": "GS2415",
+      "gender": "Male",
+      "doj": "10/28/2022",
+      "department": "Engineering",
+      "id": 12
+    },
+    {
+      "name": "Production Server",
+      "email": "sgupta@gainsight.com",
+      "companyId": "10628hkegdewuiyds",
+      "gender": "Male",
+      "doj": "10/24/2023",
+      "department": "Engineering",
+      "id": 13
     }
   ]
 }

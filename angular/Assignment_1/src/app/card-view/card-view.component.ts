@@ -77,7 +77,11 @@ export class CardViewComponent implements OnInit {
       this.employeeObj.department = this.employeeForm.value.department;
       var date = JSON.stringify(this.employeeForm.value.doj).slice(1, 11);
       const [year, month, day] = date.split("-");
-      this.employeeObj.doj = [month, +day + 1, year].join("/");
+      this.employeeObj.doj = [
+        month,
+        +day + 1 === 32 ? 31 : +day + 1,
+        year,
+      ].join("/");
       this.eService.updateEmployee(this.employeeObj, editUserId).subscribe(
         (res) => {
           alert("Employee details updated successfully!");

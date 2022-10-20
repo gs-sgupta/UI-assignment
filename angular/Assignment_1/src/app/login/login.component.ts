@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private eService: EmployeeService,
     private router: Router,
-    private authService:AuthService
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -40,16 +40,18 @@ export class LoginComponent implements OnInit {
           );
         });
         if (isUserPresent) {
-          alert("Login Successful");
           this.authService.login();
+          alert("Login Successful");
           this.validateForm.reset();
-          const currUsername = this.loginCredential.username;
-          this.router.navigate(["home",currUsername]);
+          localStorage.setItem(
+            "User Credential",
+            JSON.stringify(this.loginCredential)
+          );
+          this.router.navigate(["home"]);
         } else {
           alert("Invalid Credentials");
         }
       });
-      console.log("submit", this.validateForm.value);
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {

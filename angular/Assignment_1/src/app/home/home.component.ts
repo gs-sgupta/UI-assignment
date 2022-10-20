@@ -21,8 +21,10 @@ export class HomeComponent implements OnInit {
   currUser: string = "";
 
   ngOnInit() {
-    this.currUser = this.route.snapshot.params["name"];
-    console.log(this.currUser);
+    this.currUser = JSON.parse(
+      localStorage.getItem("User Credential")
+    ).username;
+    console.log("Current Logged In User :", this.currUser);
   }
 
   onAddEmployee(): void {
