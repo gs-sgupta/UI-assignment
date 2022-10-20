@@ -5,71 +5,68 @@
       "username": "admin@gainsight.com",
       "password": "admin@123",
       "role": "ADMIN"
+    },
+    {
+      "username": "sgupta@gainsight.com",
+      "password": "123456",
+      "role": "user",
+      "id": 2
     }
   ],
   "employees": [
     {
-      "name": "swapnil",
-      "email": "sgupta@gainsight.com",
-      "companyId": "GS2415",
+      "name": "badal",
+      "email": "b@gainsight.com",
+      "companyId": "GS128121",
       "gender": "Male",
-      "doj": "10/21/2014",
-      "department": "Designing",
+      "doj": "10/27/2022",
+      "department": "Engineering",
       "id": 1
     },
     {
-      "name": "efhruwdfjs",
+      "name": "swapnil gupta",
       "email": "s@g.com",
-      "companyId": "uwredjks",
+      "companyId": "GS24154",
       "gender": "Male",
-      "doj": "02/28/2003",
-      "department": "Engineering",
-      "id": 8
-    },
-    {
-      "name": "hola coder",
-      "email": "sgupta@gainsight.com",
-      "companyId": "GS4761",
-      "gender": "Male",
-      "doj": "03/31/2010",
-      "department": "Engineering",
-      "id": 9
-    },
-    {
-      "name": "k badal",
-      "email": "dededed@g.c",
-      "companyId": "GS3421",
-      "gender": "Male",
-      "doj": "10/21/2022",
-      "department": "TechOps",
-      "id": 10
-    },
-    {
-      "name": "Production Server",
-      "email": "b@g.com",
-      "companyId": "GS4563t7428583",
-      "gender": "Male",
-      "doj": "10/32/2022",
+      "doj": "2022-10-24T18:30:00.000Z",
       "department": "Documentation",
-      "id": 11
+      "id": 2
     },
     {
-      "name": "Production Server",
-      "email": "sgupta@gainsight.com",
+      "name": "1apples",
+      "email": "test@test.comi",
+      "companyId": "GS7843",
+      "gender": "Male",
+      "doj": "2022-10-24T18:30:00.000Z",
+      "department": "TechOps",
+      "id": 3
+    },
+    {
+      "name": "prachi",
+      "email": "p@g.com",
       "companyId": "GS2415",
-      "gender": "Male",
-      "doj": "10/28/2022",
-      "department": "Engineering",
-      "id": 12
+      "gender": "Female",
+      "doj": "2022-10-27T13:36:28.267Z",
+      "department": "Documentation",
+      "id": 4
     },
     {
-      "name": "Production Server",
-      "email": "sgupta@gainsight.com",
-      "companyId": "10628hkegdewuiyds",
-      "gender": "Male",
-      "doj": "10/24/2023",
-      "department": "Engineering",
-      "id": 13
+      "name": "shardha",
+      "email": "b@g.com",
+      "companyId": "GS4352",
+      "gender": "Female",
+      "doj": "2022-10-27T18:30:00.000Z",
+      "department": "DevOps",
+      "id": 5
+    },
+    {
+      "name": "tanya ag",
+      "email": "t@g.com",
+      "companyId": "GS4363",
+      "gender": "Female",
+      "doj": "2022-10-24T18:30:00.000Z",
+      "department": "TechOps",
+      "id": 6
     }
   ]
 }

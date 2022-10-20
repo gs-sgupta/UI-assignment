@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     this.currUser = JSON.parse(
       localStorage.getItem("User Credential")
     ).username;
-    console.log("Current Logged In User :", this.currUser);
+    // console.log("Current Logged In User :", this.currUser);
   }
 
   onAddEmployee(): void {

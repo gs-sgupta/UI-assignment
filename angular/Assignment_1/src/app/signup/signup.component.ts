@@ -10,7 +10,7 @@ import { EmployeeService } from "../services/employee.services";
 })
 export class SignupComponent implements OnInit {
   signupCredential: signup = new signup();
-  validateForm!: FormGroup;
+  userInput!: FormGroup;
   constructor(
     private fb: FormBuilder,
     private eService: EmployeeService,
@@ -18,30 +18,29 @@ export class SignupComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.validateForm = this.fb.group({
+    this.userInput = this.fb.group({
       uemail: [null, [Validators.email, Validators.required]],
       password: [null, [Validators.required]],
     });
   }
 
   onSignUp(): void {
-    if (this.validateForm.valid) {
-      this.signupCredential.username = this.validateForm.value.uemail;
-      this.signupCredential.password = this.validateForm.value.password;
+    if (this.userInput.valid) {
+      this.signupCredential.username = this.userInput.value.uemail;
+      this.signupCredential.password = this.userInput.value.password;
       this.signupCredential.role = "user";
       this.eService.onSignUp(this.signupCredential).subscribe(
         (res: any) => {
           alert("SignUp SuccessFul");
-          this.validateForm.reset();
+          this.userInput.reset();
           this.router.navigate(["login"]);
         },
         (error: any) => {
           console.log(error);
         }
       );
-
     } else {
-      Object.values(this.validateForm.controls).forEach((control) => {
+      Object.values(this.userInput.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
@@ -50,12 +49,3 @@ export class SignupComponent implements OnInit {
     }
   }
 }
-//   log(value: object[]): void {
-//     console.log(value);
-//   }
-// this.eService.getUsers(this.signupCredential).subscribe((res) => {
-//   const isUserAlreadyPresent = res.find((check: signup) => {
-//     return check.username === this.signupCredential.username;
-//   });
-//   console.log(isUserAlreadyPresent);
-//   if (!isUserAlreadyPresent) {

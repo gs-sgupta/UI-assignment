@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { employeeModel } from "../models/employee-form.model";
 import { login } from "../models/login.model";
@@ -50,8 +50,10 @@ export class EmployeeService {
   }
 
   onLogin(loginCredential:login){
-    
-    return this.http.get<any>("http://localhost:3000/users?username=admin@gainsight.com&password=admin@123").pipe(
+    const params = new HttpParams()
+      .set("username", loginCredential.username)
+      .set("password", loginCredential.password);
+    return this.http.get<any>("http://localhost:3000/users?", { params }).pipe(
       map((res: any) => {
         return res;
       })

@@ -51,13 +51,7 @@ export class EmployeeFormComponent implements OnInit {
       this.employeeObj.companyId = this.employeeForm.value.companyId;
       this.employeeObj.gender = this.employeeForm.value.gender;
       this.employeeObj.department = this.employeeForm.value.department;
-      var date = JSON.stringify(this.employeeForm.value.doj).slice(1, 11);
-      const [year, month, day] = date.split("-");
-      this.employeeObj.doj = [
-        month,
-        +day + 1 === 32 ? 31 : +day + 1,
-        year,
-      ].join("/");
+      this.employeeObj.doj = this.employeeForm.value.doj;
       this.eService.postEmployee(this.employeeObj).subscribe(
         (res) => {
           console.log(res);

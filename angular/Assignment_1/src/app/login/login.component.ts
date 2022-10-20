@@ -11,7 +11,7 @@ import { EmployeeService } from "../services/employee.services";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
-  validateForm!: FormGroup;
+  userInput!: FormGroup;
   loginCredential: login = new login();
 
   constructor(
@@ -22,33 +22,40 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.validateForm = this.fb.group({
+    this.userInput = this.fb.group({
       uemail: [null, [Validators.email, Validators.required]],
       password: [null, [Validators.required]],
     });
   }
   onLogin(): void {
-    if (this.validateForm.valid) {
-      this.loginCredential.username = this.validateForm.value.uemail;
-      this.loginCredential.password = this.validateForm.value.password;
-      const isUserPresent = this.eService.onLogin(this.loginCredential).subscribe((res) => {
-        return (
-          this.loginCredential.username === res.username &&
-          this.loginCredential.password === res.password
+    if (this.userInput.valid) {
+      this.loginCredential.username = this.userInput.value.uemail;
+      this.loginCredential.password = this.userInput.value.password;
+      const isUserPresent = this.eService
+        .onLogin(this.loginCredential)
+        .subscribe(
+          (res) => {
+            return (
+              this.loginCredential.username === res.username &&
+              this.loginCredential.password === res.password
+            );
+          },
+          (error: any) => {
+            console.log(error);
+          }
         );
-      });
-      if(isUserPresent){
+      if (isUserPresent) {
         this.authService.onlogin();
-          alert("Login Successful");
-          this.validateForm.reset();
-          localStorage.setItem(
-            "User Credential",
-            JSON.stringify(this.loginCredential)
-          );
-          this.router.navigate(["home"]);
+        alert("Login Successful");
+        this.userInput.reset();
+        localStorage.setItem(
+          "User Credential",
+          JSON.stringify(this.loginCredential)
+        );
+        this.router.navigate(["home"]);
       }
     } else {
-      Object.values(this.validateForm.controls).forEach((control) => {
+      Object.values(this.userInput.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
@@ -57,13 +64,3 @@ export class LoginComponent implements OnInit {
     }
   }
 }
-
-// this.eService.onLogin(this.loginCredential).subscribe((res) => {
-//   const isUserPresent = res.find((check: login) => {
-//     return (
-//       check.username === this.loginCredential.username &&
-//       check.password === this.loginCredential.password
-//     );
-//   });
-
-//   if (isUserPresent) {
