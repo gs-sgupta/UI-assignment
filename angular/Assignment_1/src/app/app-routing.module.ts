@@ -7,12 +7,21 @@ import { ListViewComponent } from "./list-view/list-view.component";
 import { LoginComponent } from "./login/login.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { AuthGuardService } from "./services/auth-gaurd.service";
+import { LoginGaurdService } from "./services/login-gaurd.service";
 import { SignupComponent } from "./signup/signup.component";
 
 const appRoutes: Routes = [
-  { path: "", component: LoginComponent },
-  { path: "login", component: LoginComponent },
-  { path: "signup", component: SignupComponent },
+  { path: "", redirectTo: "/login", pathMatch: "full" },
+  {
+    path: "login",
+    canActivate: [LoginGaurdService],
+    component: LoginComponent,
+  },
+  {
+    path: "signup",
+    canActivate: [LoginGaurdService],
+    component: SignupComponent,
+  },
   {
     path: "home",
     component: HomeComponent,

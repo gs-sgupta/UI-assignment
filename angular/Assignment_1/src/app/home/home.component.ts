@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   onLogout() {
-    this.authService.logout();
+    this.authService.onLogout();
     alert("Logout Succesfull!");
     this.router.navigate(["login"]);
   }

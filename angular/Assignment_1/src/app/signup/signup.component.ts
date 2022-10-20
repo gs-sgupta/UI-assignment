@@ -29,26 +29,17 @@ export class SignupComponent implements OnInit {
       this.signupCredential.username = this.validateForm.value.uemail;
       this.signupCredential.password = this.validateForm.value.password;
       this.signupCredential.role = "user";
-      this.eService.onLogin(this.signupCredential).subscribe((res) => {
-        const isUserAlreadyPresent = res.find((check: signup) => {
-          return check.username === this.signupCredential.username;
-        });
-        if (!isUserAlreadyPresent) {
-          // console.log("submit", this.validateForm.value);
-          this.eService.onSignUp(this.signupCredential).subscribe(
-            (res: any) => {
-              alert("SignUp SuccessFul");
-              this.validateForm.reset();
-            },
-            (error: any) => {
-              console.log(error);
-            }
-          );
-        } else {
-          alert("User Already present");
+      this.eService.onSignUp(this.signupCredential).subscribe(
+        (res: any) => {
+          alert("SignUp SuccessFul");
+          this.validateForm.reset();
+          this.router.navigate(["login"]);
+        },
+        (error: any) => {
+          console.log(error);
         }
-      });
-      this.router.navigate(["login"]);
+      );
+
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
@@ -58,8 +49,13 @@ export class SignupComponent implements OnInit {
       });
     }
   }
+}
 //   log(value: object[]): void {
 //     console.log(value);
 //   }
-
-}
+// this.eService.getUsers(this.signupCredential).subscribe((res) => {
+//   const isUserAlreadyPresent = res.find((check: signup) => {
+//     return check.username === this.signupCredential.username;
+//   });
+//   console.log(isUserAlreadyPresent);
+//   if (!isUserAlreadyPresent) {

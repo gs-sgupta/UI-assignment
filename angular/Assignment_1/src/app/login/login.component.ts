@@ -27,20 +27,18 @@ export class LoginComponent implements OnInit {
       password: [null, [Validators.required]],
     });
   }
-
   onLogin(): void {
     if (this.validateForm.valid) {
       this.loginCredential.username = this.validateForm.value.uemail;
       this.loginCredential.password = this.validateForm.value.password;
-      this.eService.onLogin(this.loginCredential).subscribe((res) => {
-        const isUserPresent = res.find((check: login) => {
-          return (
-            check.username === this.loginCredential.username &&
-            check.password === this.loginCredential.password
-          );
-        });
-        if (isUserPresent) {
-          this.authService.login();
+      const isUserPresent = this.eService.onLogin(this.loginCredential).subscribe((res) => {
+        return (
+          this.loginCredential.username === res.username &&
+          this.loginCredential.password === res.password
+        );
+      });
+      if(isUserPresent){
+        this.authService.onlogin();
           alert("Login Successful");
           this.validateForm.reset();
           localStorage.setItem(
@@ -48,10 +46,7 @@ export class LoginComponent implements OnInit {
             JSON.stringify(this.loginCredential)
           );
           this.router.navigate(["home"]);
-        } else {
-          alert("Invalid Credentials");
-        }
-      });
+      }
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
@@ -62,3 +57,13 @@ export class LoginComponent implements OnInit {
     }
   }
 }
+
+// this.eService.onLogin(this.loginCredential).subscribe((res) => {
+//   const isUserPresent = res.find((check: login) => {
+//     return (
+//       check.username === this.loginCredential.username &&
+//       check.password === this.loginCredential.password
+//     );
+//   });
+
+//   if (isUserPresent) {
