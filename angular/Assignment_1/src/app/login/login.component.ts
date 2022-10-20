@@ -35,12 +35,6 @@ export class LoginComponent implements OnInit {
       // doubt why after observable subscribe any statement is not executed
       this.eService.onLogin(this.loginCredential).subscribe(
         (res) => {
-          console.log(
-            "loginCredential",
-            this.loginCredential.username,
-            this.loginCredential.password
-          );
-          console.log("Result From API", res);
           if (
             res.length &&
             this.loginCredential.username === res[0].username &&

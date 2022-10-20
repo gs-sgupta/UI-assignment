@@ -61,11 +61,6 @@ export class EmployeeService {
   onLogin(loginCredential: login) {
     const name = loginCredential.username;
     const password = loginCredential.password;
-    console.log(
-      name,
-      password,
-      `http://localhost:3000/users?username=${name}&password=${password}`
-    );
     return this.http
       .get<any>(
         `http://localhost:3000/users?username=${name}&password=${password}`
