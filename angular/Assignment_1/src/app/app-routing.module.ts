@@ -25,7 +25,7 @@ const appRoutes: Routes = [
   {
     path: "home",
     component: HomeComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService], // TODO: must have list view by default
     children: [
       { path: "card-view", component: CardViewComponent },
       { path: "list-view", component: ListViewComponent },

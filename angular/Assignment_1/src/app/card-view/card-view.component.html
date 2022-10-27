@@ -27,6 +27,8 @@
 <div class="has-text-centered">
   <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>
+<!-- todo: nzCancelText,nzOkText attributes doesn't support two way data binding. refer doc-->
+<!-- todo: code duplicate, you can  make re-use employee-form.component-->
 
 <nz-modal
   [(nzVisible)]="isVisible"

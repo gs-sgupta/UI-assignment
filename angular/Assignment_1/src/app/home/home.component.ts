@@ -10,18 +10,18 @@ import { AuthService } from "../services/auth.service";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  views: number = 5;
+  views: number = 5; // TODO: remove unused variables, and also no need to mention type when you are assigning value directly to a variable
   constructor(
     private router: Router,
     private modalService: NzModalService,
     private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute // TODO: remove unused variables
   ) {}
 
-  currUser: string = "";
+  currUser: string = ""; // TODO: no need to mention type when you are assigning value directly to a variable
 
   ngOnInit() {
-    this.currUser = JSON.parse(
+    this.currUser = JSON.parse( // todo: move to service
       localStorage.getItem("User Credential")
     ).username;
     // console.log("Current Logged In User :", this.currUser);
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
 
   onLogout() {
     this.authService.onLogout();
-    alert("Logout Succesfull!");
+    alert("Logout Succesfull!");  // todo: use notification
     this.router.navigate(["login"]);
   }
 }

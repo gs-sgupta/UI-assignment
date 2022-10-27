@@ -11,21 +11,21 @@ import { EmployeeService } from "../services/employee.services";
 export class CardViewComponent implements OnInit {
   isVisible = false;
   isCancelText = null;
-  employeeList: employeeModel;
+  employeeList: employeeModel; // todo: it must be of type employeeModel[]
   employeeForm!: FormGroup;
-  employeeObj: employeeModel = new employeeModel();
+  employeeObj: employeeModel = new employeeModel(); // todo: no need f this
   page: number = 1;
-  radioValue = "";
+  radioValue = ""; // todo: remove this
   options = [
     { label: "Male", value: "Male" },
-    { label: "Female", value: "Female" },
+    { label: "Female", value: "Female" }, // todo: reuse employee-form.component
   ];
 
   constructor(private fb: FormBuilder, private eService: EmployeeService) {}
 
   ngOnInit() {
     this.displayAllEmployee();
-    this.employeeForm = this.fb.group({
+    this.employeeForm = this.fb.group({ // todo: reuse employee-form.component
       editUserId: [null],
       name: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
@@ -36,9 +36,9 @@ export class CardViewComponent implements OnInit {
     });
   }
 
-  changeDateFormat(date: any) {
+  changeDateFormat(date: any) { // todo: use angular date pipe instead of this
     // console.log(date);
-    var res = new Date(date.split(".")[0] + "Z").toLocaleDateString('en-US', {
+    var res = new Date(date.split(".")[0] + "Z").toLocaleDateString('en-US', { // todo: should not use var
       month: "2-digit",
       day: "2-digit",
       year: "numeric",
@@ -46,16 +46,16 @@ export class CardViewComponent implements OnInit {
     return res;
   }
   displayAllEmployee() {
-    this.eService.getEmployees().subscribe((res) => {
+    this.eService.getEmployees().subscribe((res) => { // todo: unsubscribe
       this.employeeList = res;
-      for (var index in this.employeeList) {
-        let day = this.changeDateFormat(this.employeeList[index].doj);
+      for (var index in this.employeeList) { // todo: don't use var
+        let day = this.changeDateFormat(this.employeeList[index].doj); // todo: use angular date pipe instead of this
         this.employeeList[index].doj = day;
       }
     });
   }
   deleteEmployeeWithId(id: number) {
-    this.eService.deleteEmployeeWithId(id).subscribe((res) => {
+    this.eService.deleteEmployeeWithId(id).subscribe((res) => { // todo: unsubscribe
       this.displayAllEmployee();
     });
   }
@@ -63,8 +63,8 @@ export class CardViewComponent implements OnInit {
   // open modals, when 'edit' got clicked
   showModal(editUserId: number): void {
     this.isVisible = true;
-    this.eService.getEmployeeWithId(editUserId).subscribe((res) => {
-      this.employeeForm.controls["editUserId"].setValue(editUserId);
+    this.eService.getEmployeeWithId(editUserId).subscribe((res) => {  // todo: duplicate code, reuse employee-form.component
+      this.employeeForm.controls["editUserId"].setValue(editUserId); // todo: you can directly assign value like this.employeeForm.patchValue()
       this.employeeForm.controls["name"].setValue(res.name);
       this.employeeForm.controls["email"].setValue(res.email);
       this.employeeForm.controls["companyId"].setValue(res.companyId);
@@ -75,14 +75,14 @@ export class CardViewComponent implements OnInit {
   }
 
   handleCancel(): void {
-    console.log("Button cancel clicked!");
+    console.log("Button cancel clicked!"); // todo: remove console
     this.isVisible = false;
   }
   onUpdate(): void {
-    var editUserId = this.employeeForm.value.editUserId;
-    console.log(editUserId);
+    var editUserId = this.employeeForm.value.editUserId; // todo: should not use var
+    console.log(editUserId); // todo: remove console
     if (this.employeeForm.valid) {
-      this.employeeObj.name = this.employeeForm.value.name;
+      this.employeeObj.name = this.employeeForm.value.name; // todo: get the value directly this.employeeForm.value
       this.employeeObj.email = this.employeeForm.value.email;
       this.employeeObj.companyId = this.employeeForm.value.companyId;
       this.employeeObj.gender = this.employeeForm.value.gender;
@@ -90,14 +90,14 @@ export class CardViewComponent implements OnInit {
       this.employeeObj.doj = this.employeeForm.value.doj;
       this.eService
         .updateEmployeeWithId(this.employeeObj, editUserId)
-        .subscribe(
+        .subscribe( // todo: unsubscribe
           (res) => {
-            alert("Employee details updated successfully!");
+            alert("Employee details updated successfully!"); // todo: use notification
             this.isVisible = false;
             this.displayAllEmployee();
           },
           (error) => {
-            alert("Details not added, something went wrong");
+            alert("Details not added, something went wrong"); // todo: display some error message to user
           }
         );
     } else {

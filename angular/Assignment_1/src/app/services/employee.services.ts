@@ -10,15 +10,15 @@ export class EmployeeService {
   constructor(private http: HttpClient) {}
 
   postEmployee(data: any) {
-    return this.http.post<any>("http://localhost:3000/employees/", data).pipe(
+    return this.http.post<any>("http://localhost:3000/employees/", data).pipe( // todo: no need of pipe and map, remove this, directly return
       map((res: any) => {
         return res;
       })
     );
   }
   getEmployees() {
-    return this.http.get<any>("http://localhost:3000/employees/").pipe(
-      map((res: any) => {
+    return this.http.get<any>("http://localhost:3000/employees/").pipe( // todo: move http://localhost:3000 to  environment file and read from that files
+      map((res: any) => { // todo: no need of pipe and map, remove this, directly return
         return res;
       })
     );
@@ -26,7 +26,7 @@ export class EmployeeService {
 
   getEmployeeWithId(id: number) {
     return this.http.get<any>("http://localhost:3000/employees/" + id).pipe(
-      map((res: any) => {
+      map((res: any) => { // todo: no need of pipe and map, remove this, directly return
         return res;
       })
     );
@@ -36,7 +36,7 @@ export class EmployeeService {
     // console.log("onupdate", data, id);
     return this.http
       .put<any>("http://localhost:3000/employees/" + id, data)
-      .pipe(
+      .pipe( // todo: no need of pipe and map, remove this, directly return
         map((res: any) => {
           return res;
         })
@@ -44,7 +44,7 @@ export class EmployeeService {
   }
   deleteEmployeeWithId(id: number) {
     return this.http.delete<any>("http://localhost:3000/employees/" + id).pipe(
-      map((res: any) => {
+      map((res: any) => { // todo: no need of pipe and map, remove this, directly return
         return res;
       })
     );
@@ -52,7 +52,7 @@ export class EmployeeService {
 
   onSignUp(data: any) {
     return this.http.post<any>("http://localhost:3000/users", data).pipe(
-      map((res: any) => {
+      map((res: any) => { // todo: no need of pipe and map, remove this, directly return
         return res;
       })
     );

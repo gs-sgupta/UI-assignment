@@ -1,4 +1,4 @@
-import { invalid } from "@angular/compiler/src/render3/view/util";
+import { invalid } from "@angular/compiler/src/render3/view/util"; // TODO: remove unused imports
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -13,7 +13,7 @@ import { EmployeeService } from "../services/employee.services";
 })
 export class LoginComponent implements OnInit {
   userInput!: FormGroup;
-  loginCredential: login = new login();
+  loginCredential: login = new login(); // TODO: no need of this variable
 
   constructor(
     private fb: FormBuilder,
@@ -30,10 +30,11 @@ export class LoginComponent implements OnInit {
   }
   onLogin(): void {
     if (this.userInput.valid) {
-      this.loginCredential.username = this.userInput.value.uemail;
+      this.loginCredential.username = this.userInput.value.uemail; // TODO: use a local variable like const or let instead of this.loginCredential
       this.loginCredential.password = this.userInput.value.password;
       // doubt why after observable subscribe any statement is not executed
-      this.eService.onLogin(this.loginCredential).subscribe(
+      // TODO: not clear with above doubt
+      this.eService.onLogin(this.loginCredential).subscribe( // TODO: do unsubscription
         (res) => {
           if (
             res.length &&
@@ -41,19 +42,19 @@ export class LoginComponent implements OnInit {
             this.loginCredential.password === res[0].password
           ) {
             this.authService.onlogin();
-            alert("Login Successful");
+            alert("Login Successful"); // TODO: remove alerts an use notification growl component in nz-zorro
             this.userInput.reset();
-            localStorage.setItem(
+            localStorage.setItem(  // TODO: don't use localstorage directly in components, use services instead
               "User Credential",
               JSON.stringify(this.loginCredential)
             );
             this.router.navigate(["home"]);
           } else {
-            alert("invalid credentials");
+            alert("invalid credentials"); // TODO: use notification
           }
         },
         (error: any) => {
-          console.log(error);
+          console.log(error); // TODO: display some error message to user when it is failed
         }
       );
     } else {

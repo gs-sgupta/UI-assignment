@@ -1,4 +1,4 @@
-import { IfStmt } from "@angular/compiler";
+import { IfStmt } from "@angular/compiler"; // todo: remove this
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NzModalRef } from "ng-zorro-antd";
@@ -13,8 +13,8 @@ import { EmployeeService } from "../services/employee.services";
 export class EmployeeFormComponent implements OnInit {
   employeeForm!: FormGroup;
   employeeList: employeeModel;
-  employeeObj: employeeModel = new employeeModel();
-  radioValue = "";
+  employeeObj: employeeModel = new employeeModel(); // todo: no need of this variable
+  radioValue = ""; // todo: remove this
   options = [
     { label: "Male", value: "Male" },
     { label: "Female", value: "Female" },
@@ -38,27 +38,27 @@ export class EmployeeFormComponent implements OnInit {
   }
   // display all the employee info in list
   listAllEmployee() {
-    this.eService.getEmployees().subscribe((res) => {
+    this.eService.getEmployees().subscribe((res) => { // todo: do unsubscribe
       this.employeeList = res;
     });
   }
   onSubmit(): void {
     if (this.employeeForm.valid) {
-      this.employeeObj.name = this.employeeForm.value.name;
+      this.employeeObj.name = this.employeeForm.value.name; // todo: use local variable and also you can directly get the whole object using this.employeeForm.value
       this.employeeObj.email = this.employeeForm.value.email;
       this.employeeObj.companyId = this.employeeForm.value.companyId;
       this.employeeObj.gender = this.employeeForm.value.gender;
       this.employeeObj.department = this.employeeForm.value.department;
       this.employeeObj.doj = this.employeeForm.value.doj;
-      this.eService.postEmployee(this.employeeObj).subscribe(
+      this.eService.postEmployee(this.employeeObj).subscribe( // todo: unsubscribe
         (res) => {
           console.log(res);
-          alert("Employee details added successfully!");
+          alert("Employee details added successfully!"); // todo: use notification
           this.listAllEmployee();
           this.modal.destroy();
         },
         (error) => {
-          alert("Details not added, something went wrong");
+          alert("Details not added, something went wrong"); // todo: display error message to user
         }
       );
     } else {

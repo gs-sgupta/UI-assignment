@@ -9,7 +9,7 @@ import { EmployeeService } from "../services/employee.services";
   styleUrls: ["./signup.component.scss"],
 })
 export class SignupComponent implements OnInit {
-  signupCredential: signup = new signup();
+  signupCredential: signup = new signup(); // TODO: no need of this variable
   userInput!: FormGroup;
   constructor(
     private fb: FormBuilder,
@@ -26,18 +26,18 @@ export class SignupComponent implements OnInit {
 
   onSignUp(): void {
     if (this.userInput.valid) {
-      this.signupCredential.username = this.userInput.value.uemail;
+      this.signupCredential.username = this.userInput.value.uemail; // TODO: use a local variable like const or let instead of this.signupCredential
       this.signupCredential.password = this.userInput.value.password;
       this.signupCredential.role = "user";
-      this.eService.onSignUp(this.signupCredential).subscribe(
-        
+      this.eService.onSignUp(this.signupCredential).subscribe( // TODO: do unsubscription
+
         (res: any) => {
-          alert("SignUp SuccessFul");
+          alert("SignUp SuccessFul"); // TODO: remove alerts an use notification growl component in nz-zorro
           this.userInput.reset();
           this.router.navigate(["login"]);
         },
         (error: any) => {
-          console.log(error);
+          console.log(error); // TODO: display some error message to user when it is failed
         }
       );
     } else {

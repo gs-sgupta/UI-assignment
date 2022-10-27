@@ -8,7 +8,7 @@ import { EmployeeService } from "./employee.services";
 export class AuthService {
   loggedIn = false;
 
-  constructor(private eService: EmployeeService) {
+  constructor(private eService: EmployeeService) { // todo: remove eService here
     this.fetchLogin();
   }
   isAuthenticated() {
