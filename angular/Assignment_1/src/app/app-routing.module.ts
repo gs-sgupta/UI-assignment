@@ -29,6 +29,7 @@ const appRoutes: Routes = [
     children: [
       { path: "card-view", component: CardViewComponent },
       { path: "list-view", component: ListViewComponent },
+      // { path: "", redirectTo: "list-view", pathMatch: "full" },
     ],
   },
   { path: "employee-form", component: EmployeeFormComponent },
