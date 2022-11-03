@@ -10,52 +10,31 @@ export class EmployeeService {
   constructor(private http: HttpClient) {}
 
   postEmployee(data: any) {
-    return this.http.post<any>("http://localhost:3000/employees/", data).pipe( // todo: no need of pipe and map, remove this, directly return
-      map((res: any) => {
-        return res;
-      })
-    );
+    // todo: no need of pipe and map, remove this, directly return - done
+    return this.http.post<any>("http://localhost:3000/employees/", data);
   }
   getEmployees() {
-    return this.http.get<any>("http://localhost:3000/employees/").pipe( // todo: move http://localhost:3000 to  environment file and read from that files
-      map((res: any) => { // todo: no need of pipe and map, remove this, directly return
-        return res;
-      })
-    );
+    // todo: no need of pipe and map, remove this, directly return - done
+    return this.http.get<any>("http://localhost:3000/employees/");
   }
 
   getEmployeeWithId(id: number) {
-    return this.http.get<any>("http://localhost:3000/employees/" + id).pipe(
-      map((res: any) => { // todo: no need of pipe and map, remove this, directly return
-        return res;
-      })
-    );
+    // todo: no need of pipe and map, remove this, directly return - done
+    return this.http.get<any>("http://localhost:3000/employees/" + id);
   }
 
   updateEmployeeWithId(data: employeeModel, id: number) {
-    // console.log("onupdate", data, id);
-    return this.http
-      .put<any>("http://localhost:3000/employees/" + id, data)
-      .pipe( // todo: no need of pipe and map, remove this, directly return
-        map((res: any) => {
-          return res;
-        })
-      );
+    // todo: no need of pipe and map, remove this, directly return - done
+    return this.http.put<any>("http://localhost:3000/employees/" + id, data);
   }
   deleteEmployeeWithId(id: number) {
-    return this.http.delete<any>("http://localhost:3000/employees/" + id).pipe(
-      map((res: any) => { // todo: no need of pipe and map, remove this, directly return
-        return res;
-      })
-    );
+    // todo: no need of pipe and map, remove this, directly return - done
+    return this.http.delete<any>("http://localhost:3000/employees/" + id);
   }
 
   onSignUp(data: any) {
-    return this.http.post<any>("http://localhost:3000/users", data).pipe(
-      map((res: any) => { // todo: no need of pipe and map, remove this, directly return
-        return res;
-      })
-    );
+    // todo: no need of pipe and map, remove this, directly return- done
+    return this.http.post<any>("http://localhost:3000/users", data);
   }
 
   onLogin(loginCredential: login) {
@@ -65,10 +44,5 @@ export class EmployeeService {
       .get<any>(
         `http://localhost:3000/users?username=${name}&password=${password}`
       )
-      .pipe(
-        map((res: any) => {
-          return res;
-        })
-      );
   }
 }

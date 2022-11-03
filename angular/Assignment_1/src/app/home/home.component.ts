@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { EmployeeFormComponent } from "../employee-form/employee-form.component";
+import { Router } from "@angular/router";
 import { NzModalService } from "ng-zorro-antd/modal";
 import { AuthService } from "../services/auth.service";
+import { NzNotificationService } from "ng-zorro-antd/notification";
 
 @Component({
   selector: "app-home-page",
@@ -10,35 +10,36 @@ import { AuthService } from "../services/auth.service";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  views: number = 5; // TODO: remove unused variables, and also no need to mention type when you are assigning value directly to a variable
   constructor(
     private router: Router,
     private modalService: NzModalService,
     private authService: AuthService,
-    private route: ActivatedRoute // TODO: remove unused variables
+    private notification: NzNotificationService
   ) {}
 
-  currUser: string = ""; // TODO: no need to mention type when you are assigning value directly to a variable
-
+  currUser = ""; // TODO: no need to mention type when you are assigning value directly to a variable - done
+  isVisible = false;
+  isAddEmployee = false;
   ngOnInit() {
-    this.currUser = JSON.parse( // todo: move to service
-      localStorage.getItem("User Credential")
-    ).username;
-    // console.log("Current Logged In User :", this.currUser);
+    // todo: move to service - done
+    this.currUser = this.authService.getLoginUserName();
   }
 
   onAddEmployee(): void {
-    this.modalService.create({
-      nzTitle: "Add Employee",
-      nzCancelText: null,
-      nzOkText: null,
-      nzContent: EmployeeFormComponent,
-    });
+    this.isVisible = true;
+    this.isAddEmployee = true;
   }
-
+  handleCancel(): void {
+    this.isVisible = false;
+    this.isAddEmployee = false;
+  }
+  createNotification(type: string, title: string, message: string): void {
+    this.notification.create(type, title, message);
+  }
   onLogout() {
     this.authService.onLogout();
-    alert("Logout Succesfull!");  // todo: use notification
+    // todo: use notification - done
+    this.createNotification("success", "Logout", "LogoutSuccessful");
     this.router.navigate(["login"]);
   }
 }

@@ -15,8 +15,7 @@ export class LoginGaurdService {
   constructor(private router: Router, private authService: AuthService) {}
 
   canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot // remove unused variables
+    route: ActivatedRouteSnapshot
   ): boolean | Observable<boolean> | Promise<boolean> {
     return this.authService.isAuthenticated().then((authenticated: boolean) => {
       if (!authenticated) {

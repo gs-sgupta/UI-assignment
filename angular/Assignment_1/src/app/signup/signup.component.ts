@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { NzNotificationService } from "ng-zorro-antd/notification";
+import { Subscription } from "rxjs";
 import { signup } from "../models/signup.model";
 import { EmployeeService } from "../services/employee.services";
 @Component({
@@ -9,12 +11,13 @@ import { EmployeeService } from "../services/employee.services";
   styleUrls: ["./signup.component.scss"],
 })
 export class SignupComponent implements OnInit {
-  signupCredential: signup = new signup(); // TODO: no need of this variable
   userInput!: FormGroup;
+  subscriptionsArray: Subscription[] = [];
   constructor(
     private fb: FormBuilder,
     private eService: EmployeeService,
-    private router: Router
+    private router: Router,
+    private notification: NzNotificationService
   ) {}
 
   ngOnInit() {
@@ -23,28 +26,49 @@ export class SignupComponent implements OnInit {
       password: [null, [Validators.required]],
     });
   }
-
+  createNotification(type: string, title: string, message: string): void {
+    this.notification.create(type, title, message);
+  }
   onSignUp(): void {
     if (this.userInput.valid) {
-      this.signupCredential.username = this.userInput.value.uemail; // TODO: use a local variable like const or let instead of this.signupCredential
-      this.signupCredential.password = this.userInput.value.password;
-      this.signupCredential.role = "user";
-      this.eService.onSignUp(this.signupCredential).subscribe( // TODO: do unsubscription
+      // TODO: use a local variable like const or let instead of this.signupCredential - done
+      let signupCredential: signup;
+      signupCredential = {
+        username: this.userInput.value.uemail,
+        password: this.userInput.value.password,
+        role: "user",
+      };
 
-        (res: any) => {
-          alert("SignUp SuccessFul"); // TODO: remove alerts an use notification growl component in nz-zorro
-          this.userInput.reset();
-          this.router.navigate(["login"]);
-        },
-        (error: any) => {
-          console.log(error); // TODO: display some error message to user when it is failed
-        }
+      this.subscriptionsArray.push(
+        this.eService.onSignUp(signupCredential).subscribe(
+          // TODO: do unsubscription - done
+
+          (res: any) => {
+            // TODO: remove alerts an use notification growl component in nz-zorro - done
+            this.createNotification("success", "Login", "Login Successful");
+            this.userInput.reset();
+            this.router.navigate(["login"]);
+          },
+          (error: any) => {
+            // TODO: display some error message to user when it is failed - done
+            this.createNotification("error", "Error", error);
+          }
+        )
       );
     } else {
       Object.values(this.userInput.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+    }
+  }
+  ngOnDestroy(): void {
+    if (this.subscriptionsArray && this.subscriptionsArray.length) {
+      this.subscriptionsArray.forEach((subs: Subscription) => {
+        if (subs) {
+          subs.unsubscribe();
         }
       });
     }

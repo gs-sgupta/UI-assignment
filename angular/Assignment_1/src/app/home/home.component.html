@@ -8,7 +8,7 @@
         </a>
       </li>
       <li nz-menu-item>
-        <a [routerLink]="['/home','card-view']">
+        <a [routerLink]="['/home', 'card-view']">
           <span nz-icon nzType="container" nzTheme="outline"></span>
           <span>Card view</span>
         </a>
@@ -20,7 +20,7 @@
     <nz-header class="header-title">
       <div class="header-title-1">Gainsight</div>
       <div class="header-title-2">
-        <div  class="user-view">
+        <div class="user-view">
           <strong>{{ currUser }}</strong>
         </div>
         <div class="logout-view">
@@ -39,3 +39,15 @@
     <div><router-outlet></router-outlet></div>
   </nz-layout>
 </nz-layout>
+
+<nz-drawer
+  [(nzVisible)]="isVisible"
+  nzTitle="Add Employee"
+  [nzWidth]="500"
+  [nzClosable]="false"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  (nzOnClose)="handleCancel()"
+>
+  <app-employee-form [isAddEmployee]="isAddEmployee"></app-employee-form>
+</nz-drawer>

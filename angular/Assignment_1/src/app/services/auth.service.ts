@@ -8,7 +8,8 @@ import { EmployeeService } from "./employee.services";
 export class AuthService {
   loggedIn = false;
 
-  constructor(private eService: EmployeeService) { // todo: remove eService here
+  constructor() {
+    // todo: remove eService here - done
     this.fetchLogin();
   }
   isAuthenticated() {
@@ -29,12 +30,19 @@ export class AuthService {
     }
   }
 
-  onlogin() {
+  onlogin(loginCredential: login) {
     this.loggedIn = true;
+    localStorage.setItem("User Credential", JSON.stringify(loginCredential));
   }
 
   onLogout() {
     this.loggedIn = false;
     localStorage.removeItem("User Credential");
+  }
+
+  getLoginUserName(): string {
+    return JSON.parse(
+      localStorage.getItem("User Credential")
+    ).username;
   }
 }

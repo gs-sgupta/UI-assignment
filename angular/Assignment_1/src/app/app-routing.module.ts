@@ -25,14 +25,15 @@ const appRoutes: Routes = [
   {
     path: "home",
     component: HomeComponent,
-    canActivate: [AuthGuardService], // TODO: must have list view by default
+    canActivate: [AuthGuardService],
     children: [
       { path: "card-view", component: CardViewComponent },
       { path: "list-view", component: ListViewComponent },
-      // { path: "", redirectTo: "list-view", pathMatch: "full" },
+       // TODO: must have list view by default - done
+      { path: "", redirectTo: "list-view", pathMatch: "full" },
     ],
   },
-  { path: "employee-form", component: EmployeeFormComponent },
+  { path: "employee-form", component: EmployeeFormComponent},
   { path: "**", component: PageNotFoundComponent },
 ];
 
