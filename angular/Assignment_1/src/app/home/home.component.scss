@@ -50,6 +50,10 @@
     background: rgba(255, 255, 255, 0.2);
     margin: 16px;
   }
+
+  .active{
+    background-color: #1690ff;
+  }
   nz-header {
     align-items: center;
     background: #fff;
@@ -62,3 +66,4 @@
   nz-footer {
     text-align: center;
   }
+
