@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { NzModalService } from "ng-zorro-antd/modal";
 import { AuthService } from "../services/auth.service";
 import { NzNotificationService } from "ng-zorro-antd/notification";
 
@@ -12,7 +11,6 @@ import { NzNotificationService } from "ng-zorro-antd/notification";
 export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
-    private modalService: NzModalService,
     private authService: AuthService,
     private notification: NzNotificationService
   ) {}

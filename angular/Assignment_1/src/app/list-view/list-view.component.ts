@@ -5,7 +5,6 @@ import { EmployeeService } from "../services/employee.services";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NzNotificationService } from "ng-zorro-antd/notification";
 import { Subscription } from "rxjs";
-import { NzModalService } from "ng-zorro-antd/modal";
 
 @Component({
   selector: "app-list-view",

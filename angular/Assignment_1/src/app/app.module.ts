@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { registerLocaleData } from "@angular/common";
 import en from "@angular/common/locales/en";
 import { CardViewComponent } from "./card-view/card-view.component";
-import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
 import { ListViewComponent } from "./list-view/list-view.component";
 import { NzLayoutModule } from "ng-zorro-antd/layout";
 import { LoginComponent } from "./login/login.component";
@@ -17,7 +17,7 @@ import { SignupComponent } from "./signup/signup.component";
 import { HomeComponent } from "./home/home.component";
 import { NzPaginationModule } from "ng-zorro-antd/pagination";
 import { NgxPaginationModule } from "ngx-pagination";
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { EmployeeFormComponent } from "./employee-form/employee-form.component";
 
 registerLocaleData(en);
@@ -48,7 +48,6 @@ registerLocaleData(en);
     NgxPaginationModule,
     NzPaginationModule,
     NzDatePickerModule,
-
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

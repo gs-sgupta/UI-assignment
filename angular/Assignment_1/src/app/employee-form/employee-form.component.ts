@@ -41,12 +41,16 @@ export class EmployeeFormComponent implements OnInit {
       doj: [null, [Validators.required]],
       department: [null, [Validators.required]],
     });
-    this.subscriptionsArray.push(
-      this.eService.getEmployeeWithId(this.editEmployeeId).subscribe((res) => {
-        // todo: you can directly assign value like this.employeeForm.patchValue() - done
-        this.employeeForm.patchValue(res);
-      })
-    );
+    if (!this.isAddEmployee) {
+      this.subscriptionsArray.push(
+        this.eService
+          .getEmployeeWithId(this.editEmployeeId)
+          .subscribe((res) => {
+            // todo: you can directly assign value like this.employeeForm.patchValue() - done
+            this.employeeForm.patchValue(res);
+          })
+      );
+    }
   }
 
   displayAllEmployee() {
@@ -82,7 +86,6 @@ export class EmployeeFormComponent implements OnInit {
                 "Successful",
                 "Employee Added Successful"
               );
-              // this.listAllEmployee();
             },
             (error) => {
               // todo: display error message to user - done

@@ -41,6 +41,7 @@
 </nz-layout>
 
 <nz-drawer
+  *ngIf="isVisible"
   [(nzVisible)]="isVisible"
   nzTitle="Add Employee"
   [nzWidth]="500"
